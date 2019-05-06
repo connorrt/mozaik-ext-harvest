@@ -3,6 +3,7 @@ import reactMixin                      from 'react-mixin';
 import { ListenerMixin }               from 'reflux';
 import _                               from 'lodash';
 import Mozaik                          from 'mozaik/browser';
+import * as harvest from 'harvest-v2';
 
 
 class Timers extends Component {
@@ -14,52 +15,29 @@ class Timers extends Component {
     }
 
     getApiRequest(){
-        let {  } = this.props;
+        /* This could probably be done a bit more efficiently.*/
+        harvest.timeEntries.list()
         return {
-            id: `harvest.timers.${  }`,
+            id: `harvest.timers.${ user }`,
             params: {
                 repository: repository
             }
         };
     }
     render() {
-        const { timer } = this.props;
-
-        let authorAvatar = null;
-        let authorNode   = null;
-
-        if (timer.commit) {
-            const { commit } = timer;
-
-            if (commit.author) {
-                authorAvatar = (
-                    <a href={commit.author.html_url} target="_blank" className="github__timer__avatar">
-                        <img src={commit.author.avatar_url} />
-                    </a>
-                );
-
-                authorNode = (
-                    <span>
-                        by <a href={commit.author.html_url} target="_blank">{commit.author.login}</a>
-                    </span>
-                );
-            }
-        }
-
         return (
             <div className="list__item harvest__timer">
-                {authorAvatar}
-                <a href={timer._links.html} target="_blank">{timer.name}</a>&nbsp;
-                {authorNode}
+                <p>Hello, world</p>
             </div>
         );
     }
 }
 
-Timers.displayName = 'Branch';
+Timers.displayName = 'Harvest Timers';
 
 Timers.propTypes = {
-    timer: PropTypes.object.isRequired
+    accountId: PropTypes.object.isRequired
+
 };
 
 

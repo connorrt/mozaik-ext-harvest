@@ -3,17 +3,23 @@ import convict from 'convict';
 
 const config = convict({
     harvest: {
-        baseUrl: {
-            doc:     'The harvest API base url.',
-            default: 'https://api.harvestapp.com/v2',
+        account_ID: {
+            doc:     'The ID of the account you want to pull from.',
+            default: '',
             format:  String,
-            env:     'HARVEST_BASE_URL'
+            env:     'HARVEST_ACCOUNT_ID'
         },
-        token: {
+        access_token: {
             doc:     'The harvest API token.',
             default: '',
             format:  String,
-            env:     'HARVEST_API_TOKEN'
+            env:     'HARVEST_ACCESS_TOKEN'
+        },
+        user_agent: {
+            doc: 'Who is using this? (name/email)',
+            default: 'Mozaik Dashboard',
+            format: String,
+            env: 'HARVEST_USER_AGENT',
         }
     }
 });
