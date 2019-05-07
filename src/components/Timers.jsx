@@ -1,44 +1,46 @@
-import React, { Component, PropTypes } from 'react';
-import reactMixin                      from 'react-mixin';
-import { ListenerMixin }               from 'reflux';
-import _                               from 'lodash';
-import Mozaik                          from 'mozaik/browser';
-import * as harvest from 'harvest-v2';
+import React, {Component, PropTypes} from 'react';
+import reactMixin from 'react-mixin';
+import {ListenerMixin} from 'reflux';
+import _ from 'lodash';
+import Harvest from 'harvest_api_v2';
 
 
 class Timers extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            timers: []
+            count: 0
         };
     }
 
-    getApiRequest(){
-        /* This could probably be done a bit more efficiently.*/
-        harvest.timeEntries.list()
+    getApiRequest() {
         return {
-            id: `harvest.timers.${ user }`,
-            params: {
-                repository: repository
-            }
+            id: 'sample.sampleMethod'
         };
     }
+
+    onApiData(data) {
+        console.log(data);
+        this.setState({count: data.count});
+    }
+
     render() {
+        const { count } = this.state;
+
         return (
-            <div className="list__item harvest__timer">
-                <p>Hello, world</p>
-            </div>
-        );
+        <div>
+            <p>{count}</p>
+            <p>Hello, world</p>
+        </div>
+    );
     }
 }
 
 Timers.displayName = 'Harvest Timers';
 
-Timers.propTypes = {
-    accountId: PropTypes.object.isRequired
+Timers.propTypes = {};
 
-};
+reactMixin(Timers.prototype, ListenerMixin);
 
 
 export default Timers;
