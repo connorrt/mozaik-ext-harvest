@@ -10,7 +10,7 @@ const client = mozaik => {
 
     const buildApiRequest = (path, params) => {
 
-        mozaik.loadApiConfig(config)
+        mozaik.loadApiConfig(config);
 
         const req = request.get(`${url}${path}`)
             .set('Authorization', ' Bearer ' + config.get('harvest.access_token'))
