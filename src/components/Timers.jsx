@@ -2,47 +2,54 @@ import React, {Component, PropTypes} from 'react';
 import reactMixin from 'react-mixin';
 import {ListenerMixin} from 'reflux';
 import _ from 'lodash';
-import fetch from 'node-fetch';
-import client from '../client'
+import client from '../client';
+import Mozaik from 'mozaik/browser';
 
 
 class Timers extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
+            timers: null
         };
     }
 
     getApiRequest() {
+        const {timers} = this.props;
+
         return {
-            id: 'sample.sampleMethod'
+            id: 'harvestv1.timers',
+            params: {timers}
         };
     }
 
-    onApiData(data) {
-        client.getTimers('https://api.harvestapp.com/api/v2/users/me.json', {})
-            .then(data => console.log(JSON.stringify(data)))
-            .catch(error => console.error(error));
-        console.log('blah blah');
+    onApiData(timers) {
+        console.log('harvest is running');
+        this.setState({
+            timers
+        });
     }
 
     render() {
+        let { timers } = this.state;
+        console.log(timers);
 
         return (
             <div>
-                <div>
-                    Hello, world
-                </div>
+                {console.log(timers)}
             </div>
         );
     }
 }
 
-Timers.displayName = 'Harvest Timers';
+//Timers.displayName = 'Harvest Timers';
 
-Timers.propTypes = {};
+//Timers.propTypes = {
+
+//};
 
 reactMixin(Timers.prototype, ListenerMixin);
-
+reactMixin(Timers.prototype, Mozaik.Mixin.ApiConsumer);
 
 export default Timers;

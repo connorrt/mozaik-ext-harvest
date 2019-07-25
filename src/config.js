@@ -20,11 +20,6 @@ const config = convict({
             default: 'Mozaik Dashboard',
             format: String,
             env: 'HARVEST_USER_AGENT',
-        },
-        baseUrl: {
-            doc: 'Base URL',
-            default: 'https://api.harvestapp.com/api/v2/',
-            format: String,
         }
     }
 });
