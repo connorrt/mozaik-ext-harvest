@@ -26,7 +26,7 @@ const client = mozaik => {
 
     return {
         timers() {
-            return buildApiRequest('users/me.json')
+            return buildApiRequest('time_entries')
                 .then(res => res.body)
                 .catch(err => {
                     console.error(err)

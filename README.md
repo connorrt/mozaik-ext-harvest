@@ -13,27 +13,16 @@ key       | env key          | required | default                | description
 `baseUrl` | HARVEST_ACCOUNT_ID  | yes   | ''                  | *harvest account id* 
 `baseUrl` | HARVEST_USER_AGENT  | yes   | 'Mozaik Dashboard'  | *device name/email, can be anything* 
 
-### usage
-```javascript
-{
-  //…
-  api: {
-    harvest: {
-        baseUrl: ''
-        token:   'MY_HARVEST_TOKEN'
-    },
-  }
-}
-```
-
 ## Widgets
 ### Timers
-Displays a list of timers that 
+Displays a list of running timers.
+
+<img src="https://raw.githubusercontent.com/connorrt/mozaik-ext-harvest/master/preview/timers.png" width="400" alt="Timers" />
 
 #### usage
 ```javascript
 {
-  type: 'harvest.timers',
+  type: 'harvestv1.timers',
   columns: 1, rows: 1, 
   x: 0, y: 0
 }
@@ -41,6 +30,6 @@ Displays a list of timers that
 
 ## Changelog
 ### 1.0.1 and below
-Unstable jumble of code. Added... schadenfreude?
+Unstable jumble of code. :(
 ### 1.1.0
-First real version. Timers added.
+First real version. Added Timers widget.

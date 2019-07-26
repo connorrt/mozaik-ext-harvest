@@ -35,19 +35,29 @@ class Timers extends Component {
         let { timers } = this.state;
         console.log(timers);
 
+        let output = [];
+        let iter = 0;
+        while (timers && timers.time_entries && !!timers.time_entries[iter] && timers.time_entries[iter].is_running) {
+            output.push(
+                <div className="running-timer">
+                    <div className="username">{timers.time_entries[iter].user.name}</div>
+                    <div className="timer-info">
+                        {timers.time_entries[iter].client.name}
+                        {": "}
+                        {timers.time_entries[iter].project.name}
+                    </div>
+                </div>
+            );
+            iter++;
+        }
+
         return (
-            <div>
-                {console.log(timers)}
+            <div className="harvest">
+                {output}
             </div>
         );
     }
 }
-
-//Timers.displayName = 'Harvest Timers';
-
-//Timers.propTypes = {
-
-//};
 
 reactMixin(Timers.prototype, ListenerMixin);
 reactMixin(Timers.prototype, Mozaik.Mixin.ApiConsumer);
