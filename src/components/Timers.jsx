@@ -25,7 +25,6 @@ class Timers extends Component {
     }
 
     onApiData(timers) {
-        console.log('harvest is running');
         this.setState({
             timers
         });
@@ -37,17 +36,19 @@ class Timers extends Component {
 
         let output = [];
         let iter = 0;
-        while (timers && timers.time_entries && !!timers.time_entries[iter] && timers.time_entries[iter].is_running) {
-            output.push(
-                <div className="running-timer">
-                    <div className="username">{timers.time_entries[iter].user.name}</div>
-                    <div className="timer-info">
-                        {timers.time_entries[iter].client.name}
-                        {": "}
-                        {timers.time_entries[iter].project.name}
+        while (timers && timers.time_entries && !!timers.time_entries[iter] && iter < 50) {
+            if (timers.time_entries[iter].is_running) {
+                output.push(
+                    <div className="running-timer">
+                        <div className="username">{timers.time_entries[iter].user.name}</div>
+                        <div className="timer-info">
+                            {timers.time_entries[iter].project.name}
+                            {": "}
+                            {timers.time_entries[iter].task.name}
+                        </div>
                     </div>
-                </div>
-            );
+                );
+            }
             iter++;
         }
 

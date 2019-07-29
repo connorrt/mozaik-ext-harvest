@@ -33,3 +33,5 @@ Displays a list of running timers.
 Unstable jumble of code. :(
 ### 1.1.0
 First real version. Added Timers widget.
+### 1.1.1
+Changed display to project/task display
