@@ -95,7 +95,7 @@
     "mockery": "1.5.1",
     "nock": "8.0.0",
     "nyc": "6.4.0",
-    "react": "^0.13.3",
+    "react": "^0.14.0",
     "sinon": "1.17.3"
   },
   "directories": {
@@ -123,7 +123,7 @@
   },
   "peerDependencies": {
     "mozaik": ">=1.4.2",
-    "react": "^0.13.3"
+    "react": "^0.14.0"
   },
   "repository": {
     "type": "git",
