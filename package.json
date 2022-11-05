@@ -94,7 +94,7 @@
     "eslint-plugin-react": "4.3.0",
     "mockery": "1.5.1",
     "nock": "8.0.0",
-    "nyc": "6.4.0",
+    "nyc": "15.1.0",
     "react": "^0.13.3",
     "sinon": "1.17.3"
   },
